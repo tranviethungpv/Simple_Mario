@@ -10,7 +10,7 @@ public class EnemyMovement : MonoBehaviour
     private float startingPosition;
     private bool movingRight = true;
 
-    private float lastHorizontalInput;
+    //private float lastHorizontalInput;
     private void Start()
     {
         startingPosition = transform.position.x;

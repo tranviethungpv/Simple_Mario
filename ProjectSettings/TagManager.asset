@@ -9,6 +9,12 @@ TagManager:
   - Tannenzafen
   - Enemy
   - Limit
+  - Enemy1
+  - Enemy2
+  - Enemy3
+  - Enemy4
+  - Gate_1
+  - Gate_2
   layers:
   - Default
   - TransparentFX

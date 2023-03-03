@@ -24,6 +24,9 @@ public class Character : MonoBehaviour
     public int alive;
     public Text aliveText;
 
+    private Vector3 lastEnemyPosition;
+    public List<GameObject> enemyPrefabs;
+
     private void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -92,7 +95,11 @@ public class Character : MonoBehaviour
             isGrounded = true;
             isJumping = false;
         }
-        if (collision.gameObject.tag == "Finish")
+        if (collision.gameObject.tag == "Gate_1")
+        {
+            SceneManager.LoadScene("Map_2");
+        }
+        if (collision.gameObject.tag == "Gate_2")
         {
             SceneManager.LoadScene("GameWin");
         }
@@ -100,19 +107,77 @@ public class Character : MonoBehaviour
         {
             SceneManager.LoadScene("GameOver");
         }
-        if (collision.gameObject.tag == "Enemy" && isJumping == false)
+        if (collision.gameObject.tag == "Enemy1" && isJumping == false)
         {
             alive--;
             aliveText.text = alive.ToString();
         }
-        if (collision.gameObject.tag == "Enemy" && isJumping == true)
+        if (collision.gameObject.tag == "Enemy2" && isJumping == false)
         {
-            KillEnemy(collision.gameObject);
+            alive--;
+            aliveText.text = alive.ToString();
+        }
+        if (collision.gameObject.tag == "Enemy3" && isJumping == false)
+        {
+            alive--;
+            aliveText.text = alive.ToString();
+        }
+        if (collision.gameObject.tag == "Enemy4" && isJumping == false)
+        {
+            alive--;
+            aliveText.text = alive.ToString();
+        }
+        if (collision.gameObject.tag == "Enemy1" && isJumping == true)
+        {
+            Renderer enemyRenderer = collision.gameObject.GetComponent<Renderer>();
+            if (enemyRenderer != null)
+            {
+                enemyRenderer.material.color = new Color(1f, 1f, 1f, 0.5f); // Make the enemy object semi-transparent
+            }
+            lastEnemyPosition = collision.gameObject.transform.position; // Get the position of the destroyed enemy object
+            Destroy(collision.gameObject, 0.2f); // Destroy the enemy object after 1 second
+            Invoke("GenerateEnemy", 5f); // Call the GenerateEnemy method after a delay of delayTime seconds
+        }
+        if (collision.gameObject.tag == "Enemy2" && isJumping == true)
+        {
+            Renderer enemyRenderer = collision.gameObject.GetComponent<Renderer>();
+            if (enemyRenderer != null)
+            {
+                enemyRenderer.material.color = new Color(1f, 1f, 1f, 0.5f); // Make the enemy object semi-transparent
+            }
+            lastEnemyPosition = collision.gameObject.transform.position; // Get the position of the destroyed enemy object
+            Destroy(collision.gameObject, 0.2f); // Destroy the enemy object after 1 second
+            Invoke("GenerateEnemy", 5f); // Call the GenerateEnemy method after a delay of delayTime seconds
+        }
+        if (collision.gameObject.tag == "Enemy3" && isJumping == true)
+        {
+            Renderer enemyRenderer = collision.gameObject.GetComponent<Renderer>();
+            if (enemyRenderer != null)
+            {
+                enemyRenderer.material.color = new Color(1f, 1f, 1f, 0.5f); // Make the enemy object semi-transparent
+            }
+            lastEnemyPosition = collision.gameObject.transform.position; // Get the position of the destroyed enemy object
+            Destroy(collision.gameObject, 0.2f); // Destroy the enemy object after 1 second
+            Invoke("GenerateEnemy", 5f); // Call the GenerateEnemy method after a delay of delayTime seconds
+        }
+        if (collision.gameObject.tag == "Enemy4" && isJumping == true)
+        {
+            Renderer enemyRenderer = collision.gameObject.GetComponent<Renderer>();
+            if (enemyRenderer != null)
+            {
+                enemyRenderer.material.color = new Color(1f, 1f, 1f, 0.5f); // Make the enemy object semi-transparent
+            }
+            lastEnemyPosition = collision.gameObject.transform.position; // Get the position of the destroyed enemy object
+            Destroy(collision.gameObject, 0.2f); // Destroy the enemy object after 1 second
+            Invoke("GenerateEnemy", 5f); // Call the GenerateEnemy method after a delay of delayTime seconds
         }
     }
-    private void KillEnemy(GameObject enemy)
+    void GenerateEnemy()
     {
-        Destroy(enemy);
+        GameObject enemyPrefabToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
+        GameObject newEnemy = Instantiate(enemyPrefabToSpawn, lastEnemyPosition, Quaternion.identity);
+        newEnemy.transform.localScale = new Vector3(120f, 120f, 120f);
+        // Add any additional behavior to the new enemy object as needed
     }
 }
 

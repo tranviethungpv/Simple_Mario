@@ -125,7 +125,7 @@ TextureImporter:
         width: 72
         height: 101
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -133,6 +133,48 @@ TextureImporter:
       bones: []
       spriteID: 283e4b5405205bc4f9c0776f97715a44
       internalID: 1588784832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies_1
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 105
+        width: 75
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 065057fcea552e14b8956751d1d03788
+      internalID: -1212423228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies_2
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 171
+        width: 92
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 814c83ecd608cff44be5b4cfbc12e7cd
+      internalID: -784000150
       vertices: []
       indices: 
       edges: []
@@ -149,6 +191,8 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       enemies_0: 1588784832
+      enemies_2: -784000150
+      enemies_1: -1212423228
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
